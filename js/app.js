@@ -3,10 +3,13 @@ function alterarStatus(id) {
     let jogo = document.getElementById(`game-${id}`);
     let imagemJogo = jogo.querySelector('.dashboard__item__img')
     let botaoAlugarDevolver = jogo.querySelector('.dashboard__item__button');
+    let nomeJogo = jogo.querySelector('.dashboard__item__name')
     if (botaoAlugarDevolver.classList.contains('dashboard__item__button--return')) {
-        imagemJogo.classList.remove('dashboard__item__img--rented');
-        botaoAlugarDevolver.classList.remove('dashboard__item__button--return');
-        botaoAlugarDevolver.innerHTML = 'Alugar';   
+        if (confirm(`Você tem certeza que deseja devolver o jogo ${nomeJogo.textContent}?`)) {
+            imagemJogo.classList.remove('dashboard__item__img--rented');
+            botaoAlugarDevolver.classList.remove('dashboard__item__button--return');
+            botaoAlugarDevolver.innerHTML = 'Alugar';   
+        }
     } else {
         imagemJogo.classList.add('dashboard__item__img--rented');
         botaoAlugarDevolver.classList.add('dashboard__item__button--return');
